@@ -1,0 +1,10 @@
+groups:
+  - name: uptime
+    rules:
+      - alert: WebServiceDown
+        expr: up{job="capstone-web"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Web service is down (health check failing)"
